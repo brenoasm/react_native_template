@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import ExampleScreen from '../../core/screens/ExampleScreen';
 import AnotherExampleScreen from '../../core/screens/AnotherExampleScreen';
+import CustomHeader from '../components/CustomHeader';
 
 export type StackRoutesType = {
   ExampleScreen: undefined;
@@ -13,7 +14,12 @@ const Stack = createStackNavigator<StackRoutesType>();
 
 const StackRoutes = () => {
   return (
-    <Stack.Navigator initialRouteName="ExampleScreen">
+    <Stack.Navigator
+      initialRouteName="ExampleScreen"
+      headerMode="screen"
+      screenOptions={{
+        header: (props) => <CustomHeader {...props} />,
+      }}>
       <Stack.Screen name="ExampleScreen" component={ExampleScreen} />
       <Stack.Screen
         name="AnotherExampleScreen"
